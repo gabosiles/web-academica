@@ -222,6 +222,10 @@ strong {
 small {
   font-size: 80%; }
 
+medium {
+  font-size: 70%;
+  }
+
 sub,
 sup {
   position: relative;
