@@ -7,7 +7,7 @@ thumbs.forEach((img, index) => {
   // Guardamos en el arreglo
   imagenes.push({
     src: img.src,
-    texto: img.alt // usamos el alt como descripción
+    texto: img.dataset.texto // usamos el alt como descripción
   });
 
   // Asignamos click automáticamente
@@ -16,13 +16,19 @@ thumbs.forEach((img, index) => {
 
 function abrirLightbox(indice) {
   indiceActual = indice;
-  document.getElementById("lightbox").style.display = "flex";
+  const lightbox = document.getElementById("lightbox");
+  const contenido = document.querySelector(".lightbox-content");
+
+  lightbox.style.display = "flex";
+  contenido.style.background = "#222"; // cambiar color dinámicamente
+  contenido.style.color = "white";      // cambiar color del texto
   mostrarImagen();
 }
 
+
 function mostrarImagen() {
   document.getElementById("lightbox-img").src = imagenes[indiceActual].src;
-  document.getElementById("lightbox-texto").innerText = imagenes[indiceActual].texto;
+  document.getElementById("lightbox-texto").innerHTML = imagenes[indiceActual].texto;
 }
 
 function cambiarImagen(direccion) {
@@ -41,6 +47,7 @@ function cerrarSiFondo(event) {
     cerrarLightbox();
   }
 }
+
 
 // 🔹 Navegación con teclas ← → y cierre con Esc
 document.addEventListener("keydown", function(e) {
