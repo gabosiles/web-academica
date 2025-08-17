@@ -19,31 +19,63 @@
 NAVBAR
 --------------------------------------->
 <nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
-<div class="container">
-	<a class="navbar-brand" href="./index.html"><strong>Revista Oktubre</strong></a>
-	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="navbar-collapse collapse" id="navbarColor02" style="">
-		<ul class="navbar-nav mr-auto d-flex align-items-center">
-			<li class="nav-item">
-			<a class="nav-link" href="quienes_somos.html">Quienes Somos? <span class="sr-only">(current)</span></a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="secciones.html">Secciones</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="ilustraciones.html">Ilustraciones</a>
-			</li>
+  <div class="container">
+    <a class="navbar-brand" href="./index.html"><strong>Revista Oktubre</strong></a>
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarColor02">
+      
+      <ul class="navbar-nav mr-auto d-flex align-items-center">
+        <li class="nav-item">
+          <a class="nav-link" href="quienes_somos.html">Quienes Somos? <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="secciones.html">Secciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ilustraciones.html">Ilustraciones</a>
+        </li>
+      </ul>
 
-		</ul>
-		<ul class="navbar-nav ml-auto d-flex align-items-center">
-			<li class="nav-item highlight">
-				<a class="nav-link" href="https://www.youtube.com/watch?v=ByRWo63GHkc&ab_channel=PatricioReyysusRedonditosdeRicota" target="_blank">Adivina donde te llevo</a>
-			</li>
-		</ul>
-	</div>
-</div>
+      <ul class="navbar-nav ml-auto d-flex align-items-center">
+		<!-- Iconos de redes sociales -->
+        <li class="nav-item">
+          	<a href="https://www.instagram.com/gabo_siles/" target="_blank" class="social-link">
+				<i class="fab fa-instagram"></i>
+			</a>
+        </li>
+        <li class="nav-item">
+        	<a href="https://www.youtube.com/" target="_blank" class="social-link">
+				<i class="fab fa-youtube"></i>
+			</a>
+        </li>
+        <li class="nav-item">
+        	<a href="https://www.spotify.com/" target="_blank" class="social-link">
+				<i class="fab fa-spotify"></i>
+			</a>
+        </li>
+		<li>
+			<a href="https://www.tiktok.com/@gabo_siles" target="_blank" class="mr-3 tiktok-link">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+      		<i class="fab fa-tiktok"></i>
+    	</a>
+		</li>
+        <!-- Link destacado 
+        <li class="nav-item highlight mr-3">
+          <a class="nav-link" href="https://www.youtube.com/watch?v=ByRWo63GHkc&ab_channel=PatricioReyysusRedonditosdeRicota" target="_blank">Adivina donde te llevo</a>
+        </li>
+		-->
+      </ul>
+
+	  
+		
+		
+
+		
+
+    </div>
+  </div>
 </nav>
 <!-- End Navbar -->
     
@@ -51,6 +83,7 @@ NAVBAR
 <!--------------------------------------
 HEADER
 --------------------------------------->
+<div class="site-container container-fluid">
 <div class="container">
   <div class="portada-revista mb-3 pt-0 pb-0 bg-light">
     <div class="row flex-column-reverse flex-md-row align-items-center">
@@ -181,24 +214,59 @@ MAIN
 		</div>
 	</div>
 </div>
+
     
 <!--------------------------------------
 FOOTER
 --------------------------------------->
 <div class="container mt-5">
-	<footer class="bg-white border-top p-3 text-muted small">
-	<div class="row align-items-center justify-content-between">
-		<div>
-            <span class="navbar-brand mr-2"><strong>Revista Oktubre</strong></span> Copyright &copy;
-			<script>document.write(new Date().getFullYear())</script>
-			 . All rights reserved.
-		</div>
-		<div>
-			Hecha por <a target="_blank" class="text-secondary font-weight-bold" href="https://www.instagram.com/gabo_siles/">Gabriel Siles</a> a petición de <a target="_blank" class="text-secondary font-weight-bold" href="https://www.instagram.com/nayib_nv/">Nayib Nema</a>
-		</div>
-	</div>
-	</footer>
+  <footer class="bg-white border-top p-3 text-muted small">
+    <div class="row align-items-center justify-content-between">
+      <!-- Marca y derechos -->
+      <div>
+        <span class="navbar-brand mr-2"><strong>Revista Oktubre</strong></span> &copy;
+        <script>document.write(new Date().getFullYear())</script>
+        . Todos los derechos reservados.
+      </div>
+
+      <!-- Declaración de misión -->
+      <div>
+        Una revista independiente dedicada a la cultura y el pensamiento crítico.
+      </div>
+    </div>
+
+    <div class="row mt-2 justify-content-between align-items-center">
+      <!-- Iconos de redes sociales -->
+      <div>
+
+		 <a href="https://www.instagram.com/gabo_siles/" target="_blank" class="social-link">
+			<i class="fab fa-instagram"></i>
+		</a>
+		<a href="https://www.youtube.com/" target="_blank" class="social-link">
+			<i class="fab fa-youtube"></i>
+		</a>
+		<a href="https://www.spotify.com/" target="_blank" class="social-link">
+			<i class="fab fa-spotify"></i>
+		</a>
+
+		<a href="https://www.tiktok.com/@gabo_siles" target="_blank" class="mr-3 tiktok-link">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+      		<i class="fab fa-tiktok"></i>
+    	</a>
+
+      </div>
+
+      <!-- Créditos del tema -->
+      <div class="text-right text-muted small">
+        Hecho con 
+        <a target="_blank" class="font-weight-bold" href="https://www.wowthemes.net/mundana-free-html-bootstrap-template/" style="color:#800000;">
+          Mundana Theme
+        </a>
+      </div>
+    </div>
+  </footer>
 </div>
+
 <!-- End Footer -->
     
 <!--------------------------------------
