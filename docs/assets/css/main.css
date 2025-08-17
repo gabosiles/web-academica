@@ -72,6 +72,13 @@ html {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* sombra */
 }
 
+.imagen-cuadro2 {
+    width: 100%;        /* ocupa todo el ancho del contenedor */
+    max-width: 150px;   /* no crece más de 200px */
+    height: auto;       /* mantiene proporción */
+    display: block;     
+    margin: 0 auto;     /* centra horizontalmente */
+}
 .imagen-cuadro {
     width: 200px;      /* ancho fijo del cuadro */
     height: 140px;     /* alto fijo del cuadro */
@@ -138,7 +145,8 @@ html {
 .lightbox-content {
   display: flex;
   gap: 20px;
-  background: #fff;
+  /* COLOR CAJA IMAGEN */
+  background: #222;
   padding: 20px;
   border-radius: 10px;
   max-width: 80%;
@@ -153,10 +161,33 @@ html {
 }
 
 .descripcion {
-  max-width: 300px;
-  font-size: 16px;
+    max-width: 300px;      /* ancho máximo del texto */
+    font-size: 16px;
+    white-space: pre-line; /* respeta saltos de línea \n */
+    line-height: 1.4;      /* separa un poco las líneas */
 }
 
+/* Para celulares */
+@media (max-width: 768px) {
+  .lightbox-content {
+    flex-direction: column; /* poner imagen y texto en columna */
+    max-width: 90%;
+    max-height: 90%;
+    padding: 15px;
+  }
+
+  .lightbox-content img {
+    max-width: 100%;   /* que ocupe el ancho disponible */
+    max-height: 50vh;  /* no más de la mitad de la pantalla */
+  }
+
+  .descripcion {
+    max-width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
 /* Botón cerrar */
 .cerrar {
   position: absolute;

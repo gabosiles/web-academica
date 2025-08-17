@@ -117,22 +117,23 @@ def guardar_json(archivos_info, salida):
 
 def generar_bloque_secciones(contenido, id_articulo):
     """Genera un bloque HTML por cada artículo del JSON."""
-    bloque = f"""<!--Bloque de Articulo {id_articulo}-->
-<div class="mb-3 d-flex justify-content-between">
-    <div class="pr-3">
-        <h2 class="mb-1 h4 font-weight-bold">
-            <a class="text-danger">{contenido['tipo']}</a>
-        </h2>
-        <h2 class="mb-1 h4 font-weight-bold">
-            <a class="text-dark" href="./material/textos/{id_articulo}.html">{contenido['titulo']}</a>
-        </h2>
-        {contenido['descripcion']}
-        <div class="font-weight-bold">{contenido['autor']}</div>
-        <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
+    bloque = f"""
+    <!--Bloque de Articulo {id_articulo}-->
+    <div class="mb-3 d-flex justify-content-between">
+        <div class="pr-3">
+            <h2 class="mb-1 h4 font-weight-bold">
+                <a class="text-danger">{contenido['tipo']}</a>
+            </h2>
+            <h2 class="mb-1 h4 font-weight-bold">
+                <a class="text-dark" href="./material/textos/{id_articulo}.html">{contenido['titulo']}</a>
+            </h2>
+            {contenido['descripcion']}
+            <div class="font-weight-bold">{contenido['autor']}</div>
+            <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
+        </div>
+        <img class="imagen-cuadro2" src="./assets/img/textos/{id_articulo}.jpg" class="imagen-cuadro">
     </div>
-    <img height="140" src="./assets/img/textos/{id_articulo}.jpg" class="imagen-cuadro">
-</div>
-<h1 class="font-weight-bold spanborder"></h1>
+    <h1 class="font-weight-bold spanborder"></h1>
 """
     return bloque
 
@@ -146,7 +147,16 @@ def generar_secciones_html(ruta_json, ruta_plantilla, ruta_salida):
                         for id_articulo, contenido in data.items())
 
     # Reemplazar marcador en plantilla
-    html_final = plantilla.replace("<!--$SECCIONES$-->", bloques)
+    botones = f"""
+    <div class="mb-4">
+        <a href="secciones.html" class="btn btn-outline-dark active">Todos</a>
+        <a href="ensayos.html" class="btn btn-outline-dark">Ensayos</a>
+        <a href="poemas.html" class="btn btn-outline-dark">Poemas</a>
+        <a href="cronicas.html" class="btn btn-outline-dark">Crónicas</a>
+        <a href="entrevistas.html" class="btn btn-outline-dark">Entrevistas</a>
+    </div>
+    """
+    html_final = plantilla.replace("<!--$BOTONES$-->", botones).replace("<!--$SECCIONES$-->", bloques)
 
     # Guardar archivo final
     os.makedirs(os.path.dirname(ruta_salida), exist_ok=True)
@@ -154,6 +164,93 @@ def generar_secciones_html(ruta_json, ruta_plantilla, ruta_salida):
         f.write(html_final)
 
     print(f"Archivo generado en: {ruta_salida}")
+
+def generar_bloque_secciones_tipo(contenido, id_articulo):
+    """Genera un bloque HTML por cada artículo del JSON."""
+    bloque = f"""
+    <!--Bloque de Articulo {id_articulo}-->
+    <div class="mb-3 d-flex justify-content-between">
+        <div class="pr-3">
+            <h2 class="mb-1 h4 font-weight-bold">
+                <a class="text-danger">{contenido['tipo']}</a>
+            </h2>
+            <h2 class="mb-1 h4 font-weight-bold">
+                <a class="text-dark" href="./material/textos/{id_articulo}.html">{contenido['titulo']}</a>
+            </h2>
+            {contenido['descripcion']}
+            <div class="font-weight-bold">{contenido['autor']}</div>
+            <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
+        </div>
+        <img class="imagen-cuadro2" src="./assets/img/textos/{id_articulo}.jpg" class="imagen-cuadro">
+    </div>
+    <h1 class="font-weight-bold spanborder"></h1>
+"""
+    return bloque
+
+def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
+    """
+    Genera archivos HTML separados para Ensayos, Poemas, Crónicas y Entrevistas
+    con la clase 'active' en el botón correspondiente a cada tipo.
+    
+    Args:
+        ruta_json: Ruta al archivo JSON con los datos
+        ruta_plantilla: Ruta a la plantilla HTML base
+        directorio_salida: Carpeta donde guardar los archivos generados
+    """
+    # Cargar datos y plantilla
+    data = cargar_json(ruta_json)
+    plantilla = cargar_plantilla(ruta_plantilla)
+    
+    # Tipos de contenido a manejar
+    tipos_contenido = {
+        'Ensayo': [],
+        'Poema': [],
+        'Crónica': [],
+        'Entrevista': []
+    }
+    
+    # Organizar contenidos por tipo
+    for id_articulo, contenido in data.items():
+        tipo = contenido['tipo']
+        tipos_contenido[tipo].append((id_articulo, contenido))
+    
+    # Generar archivo para cada tipo de contenido
+    for tipo, articulos in tipos_contenido.items():
+        # Generar bloques de contenido para este tipo
+        bloques = "\n".join(generar_bloque_secciones_tipo(contenido, id_articulo) 
+                      for id_articulo, contenido in articulos)
+        
+        # Crear botones de navegación con active correspondiente
+        botones_html = f"""
+        <div class="mb-4">
+            <a href="secciones.html" class="btn btn-outline-dark">Todos</a>
+            <a href="ensayos.html" class="btn btn-outline-dark{" active" if tipo == "Ensayo" else ""}">Ensayos</a>
+            <a href="poemas.html" class="btn btn-outline-dark{" active" if tipo == "Poema" else ""}">Poemas</a>
+            <a href="cronicas.html" class="btn btn-outline-dark{" active" if tipo == "Crónica" else ""}">Crónicas</a>
+            <a href="entrevistas.html" class="btn btn-outline-dark{" active" if tipo == "Entrevista" else ""}">Entrevistas</a>
+        </div>
+        """
+        
+        # Reemplazar en la plantilla
+        html_final = plantilla.replace("<!--$BOTONES$-->", botones_html)
+        html_final = html_final.replace("<!--$SECCIONES$-->", bloques)
+        
+        # Nombre del archivo según el tipo
+        nombre_archivo = {
+            "Ensayo": "ensayos.html",
+            "Poema": "poemas.html",
+            "Crónica": "cronicas.html",
+            "Entrevista": "entrevistas.html"
+        }[tipo]
+        
+        # Guardar archivo
+        ruta_completa = os.path.join(directorio_salida, nombre_archivo)
+        os.makedirs(directorio_salida, exist_ok=True)
+        
+        with open(ruta_completa, 'w', encoding='utf-8') as f:
+            f.write(html_final)
+        
+        print(f"Archivo generado: {ruta_completa}")
 
 def main():
     carpeta_textos = "textos"  # Cambia por tu carpeta
@@ -163,6 +260,7 @@ def main():
     guardar_json(archivos_info, salida_json)
     procesar_json_a_html('textos.json', 'plantilla_textos.html','../docs/material/textos', 10)
     generar_secciones_html('./textos.json', './plantilla_secciones.html', '../docs/secciones.html')
+    generar_archivos_por_tipo('textos.json', './plantilla_secciones.html', '../docs')
 
 if __name__ == "__main__":
     main()
