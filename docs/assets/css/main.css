@@ -26,6 +26,59 @@ html {
   flex-shrink: 0;
   border-radius: 4px; /* opcional: bordes redondeados */
 }
+/*NAV LOGOS REDES*/
+.social-icon i {
+  font-size: 28px; /* Cambia a lo que quieras */
+  color: #800000;
+}
+
+/* Estilo para TikTok */
+.tiktok-link .fa-tiktok {
+  color: #800000;       /* rojo vino */
+  font-size: 24px;      /* tamaño similar a los otros íconos */
+  filter: drop-shadow(2px 0px 0px #FD3E3E) drop-shadow(-2px -2px 0px #4DE8F4);
+  transition: transform 0.2s;
+}
+
+/* Efecto hover opcional */
+.tiktok-link .fa-tiktok:hover {
+  transform: scale(1.2);
+}
+.social-link {
+  color: #800000;           /* rojo vino */
+  font-size: 24px;          /* mismo tamaño para todos */
+  margin-right: 15px;       /* espacio entre íconos */
+  display: inline-block;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+/* Sombras específicas para TikTok */
+.social-link .fa-tiktok {
+  filter: drop-shadow(2px 0px 0px #FD3E3E) drop-shadow(-2px -2px 0px #4DE8F4);
+}
+
+/* Efecto hover para todos los íconos */
+.social-link:hover {
+  transform: scale(1.2);
+}
+
+/*CONTAINER BLANCO QUE CONTIENE TODO*/
+.site-container {
+  background-color: rgba(255, 255, 255, 1); /* blanco semi-transparente */
+  max-width: 1000px;       /* ancho máximo del bloque */
+  margin: 40px auto;       /* centra el bloque y da separación vertical */
+  padding: 30px;           /* espacio interno */
+  border-radius: 12px;     /* esquinas redondeadas */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* sombra */
+}
+
+.imagen-cuadro {
+    width: 200px;      /* ancho fijo del cuadro */
+    height: 140px;     /* alto fijo del cuadro */
+    object-fit: cover; /* recorta la imagen para llenar el cuadro sin deformar */
+    object-position: center; /* centra la imagen en el cuadro */
+    border-radius: 4px; /* opcional, para bordes redondeados */
+}
 
 /* Revistas */
 .imagen-revista {
@@ -49,6 +102,93 @@ html {
   object-fit: cover; /* esto recorta y centra la imagen */
 }
 
+/*GALERIA DE FOTOS*/
+/* ==== Estilos para la galería con Lightbox ==== */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+  gap: 15px;
+}
+
+.galeria img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.galeria img:hover {
+  transform: scale(1.1);
+}
+
+/* Fondo opaco */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenido del visor */
+.lightbox-content {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+  max-height: 80%;
+  align-items: center;
+  position: relative;
+}
+
+.lightbox-content img {
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.descripcion {
+  max-width: 300px;
+  font-size: 16px;
+}
+
+/* Botón cerrar */
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Botones navegación */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  z-index: 1100;
+}
+
+.nav.izquierda {
+  left: 20px;
+}
+
+.nav.derecha {
+  right: 20px;
+}
+/*FIN*/
 .revista-card {
   border: 1px solid #ddd;
   padding: 1.5rem;
@@ -221,6 +361,10 @@ strong {
 
 small {
   font-size: 80%; }
+
+medium {
+  font-size: 70%;
+  }
 
 sub,
 sup {
@@ -468,7 +612,17 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+ /* Fondo con imagen */
+  background-image: 
+  linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+  url('../img/fondo/fuego.jpg'); /* tu imagen */
+  background-size: cover;           /* cubre toda la pantalla */
+  background-repeat: no-repeat;     /* no se repite */
+  background-attachment: fixed;     /* se queda fija al hacer scroll */
+
+  /* Si quieres, también puedes mantener un color de respaldo */
+  background-color: #fff;           /* por si la imagen no carga */
+}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -5645,7 +5799,19 @@ button.bg-lightblue:focus {
   border-bottom-left-radius: 0.25rem !important; }
 
 .rounded-circle {
-  border-radius: 50% !important; }
+    width: 70px;             /* ancho fijo del círculo */
+    height: 70px;            /* alto fijo del círculo */
+    border-radius: 50%;      /* círculo perfecto */
+    overflow: hidden;        /* recorta cualquier parte que sobresalga */
+    display: inline-block;   /* para poder centrarlo si quieres */
+}
+
+.rounded-circle img {
+    width: 100%;             /* la imagen llena el contenedor */
+    height: 100%;            /* mantiene proporción con el contenedor */
+    object-fit: cover;       /* recorta la imagen si es necesario */
+    display: block;          /* elimina espacios abajo de la img */
+}
 
 .rounded-0 {
   border-radius: 0 !important; }
