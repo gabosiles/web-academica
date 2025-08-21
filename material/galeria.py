@@ -20,10 +20,8 @@ def leer_texto(ruta_txt):
         return None
 
 
-def procesar_carpeta(base_dir, salida_json):
-    """Recorre texts/ y images/ dentro de base_dir y genera JSON"""
-    carpeta_textos = os.path.join(base_dir, "texts")
-
+def procesar_carpeta(carpeta_textos, salida_json):
+    """Recorre texts/ y genera JSON con rutas de imágenes en docs/assets/img/galeria/"""
     data = {}
 
     for archivo in sorted(os.listdir(carpeta_textos)):
@@ -34,7 +32,7 @@ def procesar_carpeta(base_dir, salida_json):
             info = leer_texto(ruta_txt)
             if info:
                 # 🔹 Ruta relativa correcta desde docs/
-                info["imagen"] = f"../material/galeria/images/{clave}.jpg"
+                info["imagen"] = f"./assets/img/galeria/{clave}.jpg"
                 data[clave] = info
 
     with open(salida_json, "w", encoding="utf-8") as f:
@@ -79,10 +77,13 @@ def generar_html(json_file, plantilla_file, salida_html):
 
 
 if __name__ == "__main__":
-    base_dir = "./galeria"
-    salida_json = "ilustraciones.json"
+    # Ahora los textos los lees desde material/galeria/texts
+    carpeta_textos = "./galeria/texts"
+
+    # JSON e HTML se generan en docs/
+    salida_json = "../docs/assets/json/ilustraciones.json"
     plantilla_file = "plantilla_galeria.html"
     salida_html = "../docs/ilustraciones.html"
 
-    procesar_carpeta(base_dir, salida_json)
+    procesar_carpeta(carpeta_textos, salida_json)
     generar_html(salida_json, plantilla_file, salida_html)
