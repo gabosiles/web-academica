@@ -131,7 +131,7 @@ def generar_bloque_secciones(contenido, id_articulo):
             <div class="font-weight-bold">{contenido['autor']}</div>
             <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
         </div>
-        <img class="imagen-cuadro2" src="./assets/img/textos/{id_articulo}.jpg">
+        <img class="imagen-cuadro-ensayo" src="./assets/img/textos/{id_articulo}.jpg">
     </div>
     <h1 class="font-weight-bold spanborder"></h1>
 """
@@ -169,9 +169,10 @@ def generar_bloque_secciones_tipo(contenido, id_articulo):
     """Genera un bloque HTML por cada artículo del JSON."""
     bloque = f"""
     <!--Bloque de Articulo {id_articulo}-->
-    <div class="mb-3 d-flex justify-content-between">
-        <div class="pr-3">
-            <h2 class="mb-1 h4 font-weight-bold">
+    <div class="mb-3 d-flex flex-column flex-md-row align-items-start align-items-md-center">
+        <!-- Texto -->
+        <div class="order-1 order-md-1 pr-md-3 w-100">
+            <h2 class="mb-1 h5 h4-md font-weight-bold">
                 <a class="text-danger">{contenido['tipo']}</a>
             </h2>
             <h2 class="mb-1 h4 font-weight-bold">
@@ -181,10 +182,13 @@ def generar_bloque_secciones_tipo(contenido, id_articulo):
             <div class="font-weight-bold">{contenido['autor']}</div>
             <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
         </div>
-        <img class="imagen-cuadro-ensayo" src="./assets/img/textos/{id_articulo}.jpg" class="imagen-cuadro">
+        <!-- Imagen -->
+        <div class="order-2 order-md-2 mt-2 mt-md-0 ml-md-auto" style="max-width: 280px;">
+            <img class="img-fluid rounded imagen-cuadro-ensayo" src="./assets/img/textos/{id_articulo}.jpg" alt="{contenido['titulo']}">
+        </div>
     </div>
     <h1 class="font-weight-bold spanborder"></h1>
-"""
+    """
     return bloque
 
 def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
