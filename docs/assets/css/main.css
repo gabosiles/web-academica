@@ -304,73 +304,51 @@ html {
   scrollbar-color: #800000 #ffffff; /* 🔹 track blanco */
 }
 
-/* 🔹 Botón de cerrar (X) */
-.lightbox .cerrar {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  z-index: 2000; /* siempre encima */
-  user-select: none;
-}
-
-.lightbox .cerrar:hover {
-  color: #ff4444;
-}
-
 /* ===========================
    🔹 RESPONSIVE (celulares)
    =========================== */
 @media (max-width: 768px) {
   .lightbox-content {
-    flex-direction: column;
-    width: 95%;
+    flex-direction: column; /* poner imagen arriba, texto abajo */
     max-width: 95%;
-    height: auto;          /* 🔹 Que crezca según contenido */
-    max-height: none;      /* 🔹 Sin límite */
+    height: 90vh;           /* toda la altura disponible */
     padding: 10px;
+    overflow-y: auto;       /* scroll vertical */
   }
 
-  .lightbox-img-wrapper {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+  .lightbox-content img {
+    width: 100%;            /* ancho completo */
+    max-height: 50vh;       /* ocupa hasta la mitad de la pantalla */
+    object-fit: contain;    /* no deforma */
+    margin-bottom: 1rem;
   }
 
-  .lightbox-img-wrapper img {
-    width: 100%;
-    height: auto;
-    max-height: none;
-  }
-
-  .descripcion-box {
-    width: 100%;
-    height: auto;
-    max-height: none;   /* 🔹 Permite que todo el texto fluya */
-    overflow: visible;  /* 🔹 Quitar scroll interno */
+  .descripcion {
+    max-height: none;       /* quitar límite */
+    overflow-y: visible;    /* que fluya */
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: left;       /* mejor lectura en celular */
+    line-height: 1.4em;
   }
 }
 
 /* 🔹 Botón de cerrar (X) */
 .lightbox .cerrar {
   position: absolute;
-  top: 20px;
-  right: 35px;
-  font-size: 40px;
+  top: 15px;
+  right: 20px;
+  font-size: 35px;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
-  z-index: 2000; /* siempre encima */
+  z-index: 2000;
   user-select: none;
 }
 
 .lightbox .cerrar:hover {
   color: #ff4444;
 }
-
 
 /* Botones navegación */
 .nav {
