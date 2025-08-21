@@ -182,9 +182,12 @@ def generar_bloque_secciones_tipo(contenido, id_articulo):
             <div class="font-weight-bold">{contenido['autor']}</div>
             <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
         </div>
+
         <!-- Imagen -->
         <div class="order-2 order-md-2 mt-2 mt-md-0 ml-md-auto" style="max-width: 280px;">
-            <img class="img-fluid rounded imagen-cuadro-ensayo" src="./assets/img/textos/{id_articulo}.jpg" alt="{contenido['titulo']}">
+            <img class="rounded imagen-cuadro-ensayo" 
+                src="./assets/img/textos/{id_articulo}.jpg" 
+                alt="{contenido['titulo']}">
         </div>
     </div>
     <h1 class="font-weight-bold spanborder"></h1>
