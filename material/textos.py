@@ -27,7 +27,7 @@ def generar_html(contenido, plantilla, id_articulo, N):
     num = random.randint(0, N)
     img_PERFIL_html = f'<img class="rounded-circle" src="../../assets/img/perfiles/{num}.jpg" width="70">'
     html = html.replace('<!--$IMGPERFIL$-->', img_PERFIL_html)
-    img_TEXT_html = f'<img class="imagen-cuadro-ensayo" src="../../assets/img/textos/{id_articulo}.jpg">'
+    img_TEXT_html = f'<img class="imagen-cuadro-ensayo2" src="../../assets/img/textos/{id_articulo}.jpg">'
     html = html.replace('<!--$IMGTEXT$-->', img_TEXT_html)
 
 
@@ -181,7 +181,7 @@ def generar_bloque_secciones_tipo(contenido, id_articulo):
             <div class="font-weight-bold">{contenido['autor']}</div>
             <small class="text-muted">{contenido['fecha']} · {contenido['duracion']}</small>
         </div>
-        <img class="imagen-cuadro2" src="./assets/img/textos/{id_articulo}.jpg" class="imagen-cuadro">
+        <img class="imagen-cuadro-ensayo" src="./assets/img/textos/{id_articulo}.jpg" class="imagen-cuadro">
     </div>
     <h1 class="font-weight-bold spanborder"></h1>
 """

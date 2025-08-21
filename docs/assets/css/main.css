@@ -32,15 +32,24 @@ html {
   color: #800000;
 }
 
-/*IMAGENES DE ENSAYOS*/
-.imagen-fija {
-  width: 100%;              /* Que ocupe todo el ancho del contenedor */
-  max-width: 850px;         /* No más de 850px */
-  aspect-ratio: 850 / 1200; /* Mantener proporción 850:1200 */
-  object-fit: cover;        /* Rellena el espacio recortando sin deformar */
-  object-position: center;  /* Centrado del recorte */
-  display: block;
-  margin: 0 auto;           /* Centrar en pantallas grandes */
+/*IMAGENES ENSAYO*/
+
+.imagen-cuadro-ensayo {
+    width: 180px;         /* ancho fijo */
+    height: 240px;        /* alto fijo */
+    object-fit: cover;    /* recorta para llenar el cuadro sin deformar */
+    object-position: center; /* centra el recorte */
+    border-radius: 6px;   /* opcional, esquinas redondeadas */
+    display: block;
+}
+.imagen-cuadro-ensayo2 {
+    width: 450px;      /* ancho fijo del cuadro */
+    height: 600px;     /* alto fijo del cuadro */
+   object-fit: cover;   /* llena el cuadro completo */
+    object-position: center; /* centra el recorte */
+    display: block;
+    margin: 0 auto;      /* centrada */
+    border-radius: 6px;  /* opcional */
 }
 
 /* Estilo para TikTok */
@@ -84,22 +93,20 @@ html {
 }
 
 .imagen-cuadro2 {
-    width: 180px;         /* ancho fijo */
-    height: 240px;        /* alto fijo */
-    object-fit: cover;    /* recorta para llenar el cuadro sin deformar */
-    object-position: center; /* centra el recorte */
-    border-radius: 6px;   /* opcional, esquinas redondeadas */
-    display: block;
+    width: 100%;        /* ocupa todo el ancho del contenedor */
+    max-width: 150px;   /* no crece más de 200px */
+    height: auto;       /* mantiene proporción */
+    display: block;     
+    margin: 0 auto;     /* centra horizontalmente */
 }
-.imagen-cuadro-ensayo {
-    width: 450px;      /* ancho fijo del cuadro */
-    height: 600px;     /* alto fijo del cuadro */
-   object-fit: cover;   /* llena el cuadro completo */
-    object-position: center; /* centra el recorte */
-    display: block;
-    margin: 0 auto;      /* centrada */
-    border-radius: 6px;  /* opcional */
+.imagen-cuadro {
+    width: 200px;      /* ancho fijo del cuadro */
+    height: 140px;     /* alto fijo del cuadro */
+    object-fit: cover; /* recorta la imagen para llenar el cuadro sin deformar */
+    object-position: center; /* centra la imagen en el cuadro */
+    border-radius: 4px; /* opcional, para bordes redondeados */
 }
+
 /* Revistas */
 .imagen-revista {
   width: 230px;             /* más ancho */
