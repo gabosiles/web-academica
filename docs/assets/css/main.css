@@ -309,27 +309,22 @@ html {
    =========================== */
 @media (max-width: 768px) {
   .lightbox-content {
-    flex-direction: column; /* poner imagen arriba, texto abajo */
-    max-width: 95%;
-    height: 90vh;           /* toda la altura disponible */
-    padding: 10px;
-    overflow-y: auto;       /* scroll vertical */
+    width: 95%;
+    height: 95%;
+    padding: 12px;
   }
 
   .lightbox-content img {
-    width: 100%;            /* ancho completo */
-    max-height: 50vh;       /* ocupa hasta la mitad de la pantalla */
-    object-fit: contain;    /* no deforma */
-    margin-bottom: 1rem;
+    max-height: 40vh; /* imagen más baja en móvil */
+  }
+
+  .descripcion-box {
+    max-height: 50vh; /* texto ocupa más en móvil */
   }
 
   .descripcion {
-    max-height: none;       /* quitar límite */
-    overflow-y: visible;    /* que fluya */
-    margin-top: 10px;
-    font-size: 15px;
-    text-align: left;       /* mejor lectura en celular */
-    line-height: 1.4em;
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
 
