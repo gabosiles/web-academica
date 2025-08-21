@@ -236,7 +236,7 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
         
         # Crear botones de navegación con active correspondiente
         botones_html = f"""
-        <div class="mb-4">
+        <div class="mb-4 d-flex flex-wrap botones-secciones">
             <a href="secciones.html" class="btn btn-outline-dark">Todos</a>
             <a href="ensayos.html" class="btn btn-outline-dark{" active" if tipo == "Ensayo" else ""}">Ensayos</a>
             <a href="poemas.html" class="btn btn-outline-dark{" active" if tipo == "Poema" else ""}">Poemas</a>
