@@ -156,11 +156,11 @@ def generar_secciones_html(ruta_json, ruta_plantilla, ruta_salida):
     # Reemplazar marcador en plantilla
     botones = f"""
     <div class="mb-4">
-        <a href="secciones.html" class="btn btn-outline-dark active">Todos</a>
-        <a href="ensayos.html" class="btn btn-outline-dark">Ensayos</a>
-        <a href="poemas.html" class="btn btn-outline-dark">Poemas</a>
-        <a href="cronicas.html" class="btn btn-outline-dark">Crónicas</a>
-        <a href="entrevistas.html" class="btn btn-outline-dark">Entrevistas</a>
+        <a href="secciones.html" class="btn btn-outline-dark m-2 active">Todos</a>
+        <a href="ensayos.html" class="btn btn-outline-dark m-2">Ensayos</a>
+        <a href="poemas.html" class="btn btn-outline-dark m-2">Poemas</a>
+        <a href="cronicas.html" class="btn btn-outline-dark m-2">Crónicas</a>
+        <a href="entrevistas.html" class="btn btn-outline-dark m-2">Entrevistas</a>
     </div>
     """
     html_final = plantilla.replace("<!--$BOTONES$-->", botones).replace("<!--$SECCIONES$-->", bloques)
@@ -236,12 +236,12 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
         
         # Crear botones de navegación con active correspondiente
         botones_html = f"""
-        <div class="mb-4 d-flex flex-wrap botones-secciones">
-            <a href="secciones.html" class="btn btn-outline-dark">Todos</a>
-            <a href="ensayos.html" class="btn btn-outline-dark{" active" if tipo == "Ensayo" else ""}">Ensayos</a>
-            <a href="poemas.html" class="btn btn-outline-dark{" active" if tipo == "Poema" else ""}">Poemas</a>
-            <a href="cronicas.html" class="btn btn-outline-dark{" active" if tipo == "Crónica" else ""}">Crónicas</a>
-            <a href="entrevistas.html" class="btn btn-outline-dark{" active" if tipo == "Entrevista" else ""}">Entrevistas</a>
+        <div class="mb-4">
+            <a href="secciones.html" class="btn btn-outline-dark m-2">Todos</a>
+            <a href="ensayos.html" class="btn btn-outline-dark m-2{" active" if tipo == "Ensayo" else ""}">Ensayos</a>
+            <a href="poemas.html" class="btn btn-outline-dark m-2{" active" if tipo == "Poema" else ""}">Poemas</a>
+            <a href="cronicas.html" class="btn btn-outline-dark m-2{" active" if tipo == "Crónica" else ""}">Crónicas</a>
+            <a href="entrevistas.html" class="btn btn-outline-dark m-2{" active" if tipo == "Entrevista" else ""}">Entrevistas</a>
         </div>
         """
         
