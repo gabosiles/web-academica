@@ -59,9 +59,28 @@ def procesar_descripcion(texto):
 
     # Reemplazar saltos simples por espacio
     texto = texto.replace("\n", " ")
+    texto = procesar_negritas(texto) 
 
     # Envolver en etiquetas <p>
     return f'<p class="mb-3">{texto}</p>'
+
+def procesar_negritas(texto):
+    """
+    Convierte segmentos encerrados en %...% a <strong>...</strong>.
+    Ejemplo: 'Esto es %importante%' -> 'Esto es <strong>importante</strong>'
+    """
+    resultado = ""
+    dentro = False
+    for char in texto:
+        if char == "%":
+            if dentro:
+                resultado += "</strong>"
+            else:
+                resultado += "<strong>"
+            dentro = not dentro
+        else:
+            resultado += char
+    return resultado
 
 def procesar_texto(texto):
     """Convierte saltos de línea en párrafos HTML."""
@@ -69,13 +88,14 @@ def procesar_texto(texto):
     texto = html.escape(texto.strip())
 
     # Reemplazar dos o más saltos de línea por cierre y apertura de párrafo
-    texto = texto.replace("\n\n", "</p><p>")
+    texto = texto.replace("\n\n", '</p><p class="justificado">')
 
     # Reemplazar saltos simples por espacio
-    texto = texto.replace("\n", "</p><p>")
+    texto = texto.replace("\n", '</p><p class="justificado">')
+    texto = procesar_negritas(texto)
 
     # Envolver en etiquetas <p>
-    return f"<p>{texto}</p>"
+    return f'<p class="justificado">{texto}</p>'
 
 def leer_textos(carpeta):
     """Lee los archivos de texto de la carpeta y devuelve un diccionario con la información."""
@@ -161,6 +181,9 @@ def generar_secciones_html(ruta_json, ruta_plantilla, ruta_salida):
         <a href="poemas.html" class="btn btn-outline-dark m-1">Poemas</a>
         <a href="cronicas.html" class="btn btn-outline-dark m-1">Crónicas</a>
         <a href="entrevistas.html" class="btn btn-outline-dark m-1">Entrevistas</a>
+        <a href="cuentos.html" class="btn btn-outline-dark m-1">Cuentos</a>
+        <a href="cartas.html" class="btn btn-outline-dark m-1">Cartas</a>
+        <a href="resena.html" class="btn btn-outline-dark m-1">Reseñas</a>
     </div>
     """
     html_final = plantilla.replace("<!--$BOTONES$-->", botones).replace("<!--$SECCIONES$-->", bloques)
@@ -220,7 +243,10 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
         'Ensayo': [],
         'Poema': [],
         'Crónica': [],
-        'Entrevista': []
+        'Entrevista': [],
+        'Cuento': [],
+        'Carta' : [],
+        'Reseña' : []
     }
     
     # Organizar contenidos por tipo
@@ -242,6 +268,10 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
             <a href="poemas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Poema" else ""}">Poemas</a>
             <a href="cronicas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Crónica" else ""}">Crónicas</a>
             <a href="entrevistas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Entrevista" else ""}">Entrevistas</a>
+            <a href="cuentos.html" class="btn btn-outline-dark m-1{" active" if tipo == "Cuento" else ""}">Cuentos</a>
+            <a href="cartas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Carta" else ""}">Cartas</a>
+            <a href="resena.html" class="btn btn-outline-dark m-1{" active" if tipo == "Reseña" else ""}">Reseñas</a>
+
         </div>
         """
         
@@ -254,7 +284,11 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
             "Ensayo": "ensayos.html",
             "Poema": "poemas.html",
             "Crónica": "cronicas.html",
-            "Entrevista": "entrevistas.html"
+            "Entrevista": "entrevistas.html",
+            "Cuento": "cuentos.html",
+            "Carta": "cartas.html",
+            "Reseña": "resena.html"
+
         }[tipo]
         
         # Guardar archivo

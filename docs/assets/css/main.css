@@ -19,6 +19,11 @@ html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
+  .justificado {
+  text-align: justify;
+}
+
+
   .imagen-fija {
   width: 200px;
   height:100px;
@@ -31,7 +36,72 @@ html {
   font-size: 28px; /* Cambia a lo que quieras */
   color: #800000;
 }
+/*INDEX*/
+.img-fluid {
+  max-width: 100%;
+  height: auto; 
+  border-radius: 8px;}
 
+  .portada-revista {
+  border-radius: 8px;
+  height: auto;
+  background-color: #f5f5f5;
+  padding: 2rem 1rem 5rem 1rem;
+}
+
+.bg-light {
+  background-color: #f5f5f5 !important; }
+
+.text-section {
+  font-family: 'Lora', serif;
+  font-size: 0.88rem; /* un poquito más grande que lo normal */
+  line-height: 1.6;   /* más aire entre líneas */
+  text-align: justify;
+}
+
+.portada-img {
+  width: 100%;
+  height: 600px; /* puedes ajustar este valor */
+  background-size: contain; /* o cover si quieres que se recorte */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*TITULO REVISTA DE OKT*/
+.titulo-central {
+  background-color: transparent;
+  margin-top: 40px;      /* agrega espacio entre la navbar y el título */
+  margin-bottom: 00px;   /* asegura que la distancia con el header sea igual */
+}
+
+.navbar-brand img {
+  height: 40px; /* tamaño normal en escritorio */
+}
+
+@media (max-width: 576px) {
+  .navbar-brand img {
+    height: 32px; /* logo un poco más pequeño en móvil */
+    margin-right: 0; /* ya no hace falta espacio porque no hay texto */
+  }
+}
+
+/*Progressbar*/
+#loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff0000, #ff6600, #ffcc00, #ff0000);
+  background-size: 300% 100%;
+  animation: mover 3s linear infinite;
+  z-index: 2000;
+}
+
+@keyframes mover {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
 /*IMAGENES ENSAYO*/
 
 .imagen-cuadro-ensayo {
@@ -149,6 +219,150 @@ html {
   transform: scale(1.1);
 }
 
+
+/* ===========================
+   🔹 CARRUSEL
+   =========================== */
+
+   .gs-slider-container {
+  display: flex;
+  overflow-x: hidden;
+  gap: 20px;
+  scroll-behavior: smooth;
+  padding: 20px 40px; /* 🔥 padding lateral para espacio con flechas */
+  box-sizing: border-box;
+}
+.gs-card {
+  flex: 0 0 280px;
+  max-width: 250px;
+  height: 380px;
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* margen para la primera y última tarjeta */
+.gs-card:first-child {
+  margin-left: 20px;
+}
+
+.gs-card:last-child {
+  margin-right: 20px;
+}
+.gs-section-dark {
+  width: 100%;        /* solo ocupa el ancho del contenedor padre */
+  padding: 20px 0;
+  background: linear-gradient(270deg, #800000, #1a1a1a, #b30000, #2b2b2b);
+  background-size: 600% 600%;
+  animation: gs-gradientShift 10s ease infinite;
+}
+
+@keyframes gs-gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gs-card-img {
+  width: 100%;
+  height: 150px;     /* 🔥 cuadro de la imagen */
+  overflow: hidden;
+}
+
+.gs-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gs-card-body {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #3a0d0d; /* rojo oscuro */
+}
+
+.gs-card-date {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.gs-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.gs-card-text {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.gs-btn {
+  align-self: center;
+  display: inline-block;
+  padding: 8px 16px;
+  background: #b30000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.gs-btn:hover {
+  background: #ff1a1a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gs-card {
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
+}
+
+.gs-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.15); /* 🔥 círculo semi-transparente */
+  color: #fff;
+  border: none;
+  font-size: 1.8rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px); /* efecto cristal */
+}
+
+.gs-arrow:hover {
+  background: rgba(179, 0, 0, 0.9); /* rojo oscuro al hover */
+  transform: translateY(-50%) scale(1.1); /* animación ligera */
+}
+
+.gs-left {
+  left: -15px;  /* pegada al borde */
+}
+
+.gs-right {
+  right: -15px;
+}
+
+
 /* ===========================
    🔹 FONDO DEL LIGHTBOX
    =========================== */
@@ -225,7 +439,7 @@ html {
   font-family: 'Playfair Display', serif; /* tipografía elegante */
   font-size: 36px;
   font-weight: 700;       /* bold */
-  color: #111;
+  color: #000000;
   display: block;
   margin-bottom: 6px;
   line-height: 1.2;
@@ -397,19 +611,9 @@ html {
   margin-bottom: 0.4rem;
 }
 
-.portada-revista {
-  border-radius: 6px;
-  background-color: #f8f9fa;
-  padding: 2rem 1rem;
-}
 
-.portada-img {
-  width: 100%;
-  height: 300px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
+
 
 @media (max-width: 767px) {
   .revista-card {
@@ -446,16 +650,19 @@ html {
   }
 
   .portada-img {
-    height: 100%;
-    min-height: 320px;
-    background-size: cover;
-  }
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* opcional si querés esquinas redondeadas */
+}
+
 
   .image-section {
     padding-right: 0;
   }
 
   .text-section {
+    text-align: justify !important;
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -1131,9 +1338,6 @@ mark,
   .blockquote-footer::before {
     content: "\2014 \00A0"; }
 
-.img-fluid {
-  max-width: 100%;
-  height: auto; }
 
 .img-thumbnail {
   padding: 0.25rem;
@@ -1186,6 +1390,9 @@ pre {
   overflow-y: scroll; }
 
 .container {
+   position: relative;
+  z-index: 1;            /* asegura que quede encima */
+  overflow: hidden;      /* oculta la parte que no se debe ver */
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -4040,7 +4247,7 @@ input[type="button"].btn-block {
   display: flex;
   flex-direction: column;
   padding-left: 0;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
   list-style: none; }
   .navbar-nav .nav-link {
     padding-right: 0;
@@ -5790,8 +5997,7 @@ button.bg-danger:hover,
 button.bg-danger:focus {
   background-color: #d1154b !important; }
 
-.bg-light {
-  background-color: #f8f9fa !important; }
+
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
