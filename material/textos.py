@@ -311,7 +311,7 @@ def main():
 
     archivos_info = leer_textos(carpeta_textos)
     guardar_json(archivos_info, salida_json)
-    procesar_json_a_html('textos.json', 'plantilla_textos.html','../docs/material/textos', 1)
+    procesar_json_a_html('textos.json', 'plantilla_textos.html','../docs/material/textos', 0)
     generar_secciones_html('./textos.json', './plantilla_secciones.html', '../docs/secciones.html')
     generar_archivos_por_tipo('textos.json', './plantilla_secciones.html', '../docs')
 
