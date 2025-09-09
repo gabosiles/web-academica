@@ -2,6 +2,9 @@ import os
 import json
 import html
 import random
+# --- NUEVO: helpers para tabs ---
+import re
+from collections import defaultdict
 
 def cargar_json(ruta_json):
     """Carga y devuelve el contenido del archivo JSON."""
@@ -175,15 +178,15 @@ def generar_secciones_html(ruta_json, ruta_plantilla, ruta_salida):
 
     # Reemplazar marcador en plantilla
     botones = f"""
-    <div class="mb-4">
-        <a href="secciones.html" class="btn btn-outline-dark m-1 active">Todos</a>
-        <a href="ensayos.html" class="btn btn-outline-dark m-1">Ensayos</a>
-        <a href="poemas.html" class="btn btn-outline-dark m-1">Poemas</a>
-        <a href="cronicas.html" class="btn btn-outline-dark m-1">Crónicas</a>
-        <a href="entrevistas.html" class="btn btn-outline-dark m-1">Entrevistas</a>
-        <a href="cuentos.html" class="btn btn-outline-dark m-1">Cuentos</a>
-        <a href="cartas.html" class="btn btn-outline-dark m-1">Cartas</a>
-        <a href="resena.html" class="btn btn-outline-dark m-1">Reseñas</a>
+    <div class="tabs">
+    <a href="secciones.html" class="tab-btn active">Todos</a>
+    <a href="ensayos.html" class="tab-btn">Ensayos</a>
+    <a href="poemas.html" class="tab-btn">Poemas</a>
+    <a href="cronicas.html" class="tab-btn">Crónicas</a>
+    <a href="entrevistas.html" class="tab-btn">Entrevistas</a>
+    <a href="cuentos.html" class="tab-btn">Cuentos</a>
+    <a href="cartas.html" class="tab-btn">Cartas</a>
+    <a href="resena.html" class="tab-btn">Reseñas</a>
     </div>
     """
     html_final = plantilla.replace("<!--$BOTONES$-->", botones).replace("<!--$SECCIONES$-->", bloques)
@@ -262,15 +265,15 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
         
         # Crear botones de navegación con active correspondiente
         botones_html = f"""
-        <div class="mb-4">
-            <a href="secciones.html" class="btn btn-outline-dark m-1">Todos</a>
-            <a href="ensayos.html" class="btn btn-outline-dark m-1{" active" if tipo == "Ensayo" else ""}">Ensayos</a>
-            <a href="poemas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Poema" else ""}">Poemas</a>
-            <a href="cronicas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Crónica" else ""}">Crónicas</a>
-            <a href="entrevistas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Entrevista" else ""}">Entrevistas</a>
-            <a href="cuentos.html" class="btn btn-outline-dark m-1{" active" if tipo == "Cuento" else ""}">Cuentos</a>
-            <a href="cartas.html" class="btn btn-outline-dark m-1{" active" if tipo == "Carta" else ""}">Cartas</a>
-            <a href="resena.html" class="btn btn-outline-dark m-1{" active" if tipo == "Reseña" else ""}">Reseñas</a>
+        <div class="tabs">
+            <a href="secciones.html" class="tab-btn">Todos</a>
+            <a href="ensayos.html" class="tab-btn{" active" if tipo == "Ensayo" else ""}">Ensayos</a>
+            <a href="poemas.html" class="tab-btn{" active" if tipo == "Poema" else ""}">Poemas</a>
+            <a href="cronicas.html" class="tab-btn{" active" if tipo == "Crónica" else ""}">Crónicas</a>
+            <a href="entrevistas.html" class="tab-btn{" active" if tipo == "Entrevista" else ""}">Entrevistas</a>
+            <a href="cuentos.html" class="tab-btn{" active" if tipo == "Cuento" else ""}">Cuentos</a>
+            <a href="cartas.html" class="tab-btn{" active" if tipo == "Carta" else ""}">Cartas</a>
+            <a href="resena.html" class="tab-btn{" active" if tipo == "Reseña" else ""}">Reseñas</a>
 
         </div>
         """
@@ -300,13 +303,15 @@ def generar_archivos_por_tipo(ruta_json, ruta_plantilla, directorio_salida):
         
         print(f"Archivo generado: {ruta_completa}")
 
+
+
 def main():
     carpeta_textos = "textos"  # Cambia por tu carpeta
     salida_json = "textos.json"
 
     archivos_info = leer_textos(carpeta_textos)
     guardar_json(archivos_info, salida_json)
-    procesar_json_a_html('textos.json', 'plantilla_textos.html','../docs/material/textos', 10)
+    procesar_json_a_html('textos.json', 'plantilla_textos.html','../docs/material/textos', 1)
     generar_secciones_html('./textos.json', './plantilla_secciones.html', '../docs/secciones.html')
     generar_archivos_por_tipo('textos.json', './plantilla_secciones.html', '../docs')
 

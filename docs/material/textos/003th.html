@@ -18,7 +18,7 @@
 <link href="../../assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
-<div id="loading-bar"></div>
+<div id="loading-bar2"></div>
 <!--------------------------------------
 NAVBAR
 --------------------------------------->
@@ -34,6 +34,11 @@ NAVBAR
     <div class="navbar-collapse collapse" id="navbarColor02">
       
       <ul class="navbar-nav mr-auto d-flex align-items-center">
+        <!-- 
+        <li class="nav-item">
+          <a class="nav-link" href="../../quienes_somos.html">Quienes Somos? <span class="sr-only">(current)</span></a>
+        </li>
+         -->
         <li class="nav-item">
           <a class="nav-link" href="../../secciones.html">Secciones</a>
         </li>
@@ -101,7 +106,7 @@ HEADER
                     <p class="mb-3">—Buenas muchachos, me llamo Martín Bueno, soy el oficial a cargo de ustedes. Por lo general en las calles estaría a su servicio, pero en este caso es al revés, pero calma, si son buenos conmigo, yo lo seré con ustedes.</p><p>Ramón le escupió ante la mirada atónita de los dos hombres, pero Bueno no se inmutó, no sería la primera vez.</p>
                     <!--$FIN$-->
 					<div class="d-flex align-items-center">
-						<img class="rounded-circle" src="../../assets/img/perfiles/2.jpg" width="70">
+						<img class="rounded-circle" src="../../assets/img/perfiles/1.jpg" width="70">
 						<div class="ml-2">
                             <span style="font-size: 1.2rem; font-weight: bold;">
                                 Por Adrián Arévalo Angulo
@@ -205,5 +210,26 @@ JAVASCRIPTS
 <script src="../../assets/js/vendor/popper.min.js" type="text/javascript"></script>
 <script src="../../assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../assets/js/functions.js" type="text/javascript"></script>
+<script>
+  (function(){
+    var bar = document.getElementById('loading-bar2');
+
+    function updateProgress(){
+      var doc = document.documentElement, body = document.body;
+      var scrollTop    = doc.scrollTop || body.scrollTop;
+      var scrollHeight = doc.scrollHeight || body.scrollHeight;
+      var clientHeight = doc.clientHeight;
+
+      var max = Math.max(scrollHeight - clientHeight, 1);
+      var pct = (scrollTop / max) * 100;
+
+      bar.style.width = pct + '%';
+    }
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    window.addEventListener('resize', updateProgress);
+  })();
+</script>
 </body>
 </html>

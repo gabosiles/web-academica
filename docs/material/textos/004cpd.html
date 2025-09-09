@@ -18,7 +18,7 @@
 <link href="../../assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
-<div id="loading-bar"></div>
+<div id="loading-bar2"></div>
 <!--------------------------------------
 NAVBAR
 --------------------------------------->
@@ -34,6 +34,11 @@ NAVBAR
     <div class="navbar-collapse collapse" id="navbarColor02">
       
       <ul class="navbar-nav mr-auto d-flex align-items-center">
+        <!-- 
+        <li class="nav-item">
+          <a class="nav-link" href="../../quienes_somos.html">Quienes Somos? <span class="sr-only">(current)</span></a>
+        </li>
+         -->
         <li class="nav-item">
           <a class="nav-link" href="../../secciones.html">Secciones</a>
         </li>
@@ -101,7 +106,7 @@ HEADER
                     <p class="mb-3">Esta serie nace en conmemoración de todas las personas que sufren el fatídico destino de verse atravesadas por una de las problemáticas más grandes que recorren Latinoamérica: la desaparición forzada. Canciones varias al respecto</p>
                     <!--$FIN$-->
 					<div class="d-flex align-items-center">
-						<img class="rounded-circle" src="../../assets/img/perfiles/5.jpg" width="70">
+						<img class="rounded-circle" src="../../assets/img/perfiles/0.jpg" width="70">
 						<div class="ml-2">
                             <span style="font-size: 1.2rem; font-weight: bold;">
                                 Por Samuel Hidalgo
@@ -205,5 +210,26 @@ JAVASCRIPTS
 <script src="../../assets/js/vendor/popper.min.js" type="text/javascript"></script>
 <script src="../../assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../assets/js/functions.js" type="text/javascript"></script>
+<script>
+  (function(){
+    var bar = document.getElementById('loading-bar2');
+
+    function updateProgress(){
+      var doc = document.documentElement, body = document.body;
+      var scrollTop    = doc.scrollTop || body.scrollTop;
+      var scrollHeight = doc.scrollHeight || body.scrollHeight;
+      var clientHeight = doc.clientHeight;
+
+      var max = Math.max(scrollHeight - clientHeight, 1);
+      var pct = (scrollTop / max) * 100;
+
+      bar.style.width = pct + '%';
+    }
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    window.addEventListener('resize', updateProgress);
+  })();
+</script>
 </body>
 </html>

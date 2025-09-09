@@ -10,6 +10,9 @@
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700" rel="stylesheet">
+<!-- Fuente llamativa: Montserrat Alternates -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <!-- Main CSS -->
@@ -258,55 +261,103 @@ HEADER
 			</div>
 		</div>
 	</div>
+
 	<div class="container mt-5">
 		<div class="row justify-content-between">
-			<!-- Video grande -->
+			<!-- Video grande con carrusel -->
 			<div class="col-md-8">
-			<h5 class="font-weight-bold spanborder"><span>ENTREVISTAS QUE NO TE PUEDES PERDER</span></h5>
-			<div class="embed-responsive embed-responsive-16by9 mb-4">
-				<iframe 
-				class="embed-responsive-item" 
-				src="https://www.youtube.com/embed/NVKW76XP5DU" 
-				allowfullscreen>
-				</iframe>
-			</div>
-			</div>
-			
-			<!-- Playlists -->
-			<div class="col-md-4 pl-4">
-			<h5 class="font-weight-bold spanborder"><span>NUESTRAS REVISTAS</span></h5>
-			<ol class="list-featured">
-				<!-- 1era edicion -->
-				<li>
-				<span>
-					<h6 class="font-weight-bold">
-					<a href="https://heyzine.com/flip-book/43b5f738ed.html#page/1" 
-						target="_blank" class="text-dark">
-						Revista Fuegos de Oktubre I				</a>
-					</h6>
-					<p class="text-muted">
-					Marzo, 2025 &middot; 72 páginas
-					</p>
-				</span>
-				</li>
-				<!-- 2nda edicion -->
-				<li>
-				<span>
-					<h6 class="font-weight-bold">
-					<a href="https://heyzine.com/flip-book/b3772a51de.html?fbclid=PAVERFWAMqCzNleHRuA2FlbQIxMQABp83eOUS3vK9cdagT5WMjOBpT0nRLsbLzOZvkIL0UtP4U7HBvMOPviW8kNr5C_aem_ZyeC8GYQO6Lsa5GvJdOnzQ" 
-						target="_blank" class="text-dark">
-						Revista Fuegos de Oktubre II					</a>
-					</h6>
-					<p class="text-muted">
-					Marzo, 2025 &middot; 72 páginas
-					</p>
-				</span>
-				</li>
-			</ol>
+			<h5 class="font-weight-bold spanborder">
+				<span>ENTREVISTAS QUE NO TE PUEDES PERDER</span>
+			</h5>
 
+			<!-- Carrusel de videos -->
+			<div id="videoCarousel" class="carousel slide mb-4"
+				data-ride="false"
+				data-interval="false"
+				data-touch="false"
+				data-keyboard="false">
+
+				<!-- Contenedor de videos -->
+				<div class="carousel-inner">
+				<!-- Video 1 -->
+				<div class="carousel-item active">
+					<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item"
+						src="https://www.youtube.com/embed/NVKW76XP5DU?enablejsapi=1"
+						allowfullscreen></iframe>
+					</div>
+				</div>
+
+				<!-- Video 2 -->
+				<div class="carousel-item">
+					<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item"
+						src="https://www.youtube.com/embed/3BfoTTvPK3A?enablejsapi=1"
+						allowfullscreen></iframe>
+					</div>
+				</div>
+
+				<!-- Video 3 
+				<div class="carousel-item">
+					<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item"
+						src="https://www.youtube.com/embed/VIDEO_ID_3"
+						allowfullscreen></iframe>
+					</div>
+				</div>
+				-->
+				</div>
+
+				<!-- Controles e indicadores abajo -->
+				<div class="d-flex justify-content-between align-items-center mt-3">
+				<!-- Flecha izquierda -->
+				<a class="btn btn-outline-dark btn-sm" href="#videoCarousel" role="button" data-slide="prev">‹</a>
+
+				<!-- Indicadores como rayitas -->
+				<ol class="carousel-indicators mb-0">
+					<li data-target="#videoCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#videoCarousel" data-slide-to="1"></li>
+				</ol>
+
+				<!-- Flecha derecha -->
+				<a class="btn btn-outline-dark btn-sm" href="#videoCarousel" role="button" data-slide="next">›</a>
+				</div>
 			</div>
+			</div>
+
+			<!-- revistas -->
+		<div class="col-md-4 pl-4">
+			<h5 class="font-weight-bold spanborder"><span>NUESTRAS REVISTAS</span></h5>
+			<ul class="revistas list-unstyled">
+
+			<!-- Nº1 -->
+			<li class="revista-item">
+				<a class="revista-card" href="https://heyzine.com/flip-book/43b5f738ed.html#page/1" target="_blank">
+				<div class="revista-num">01</div>
+				<div class="revista-body">
+					<h6 class="revista-titulo">Revista Fuegos de Oktubre I</h6>
+					<p class="text-light mb-0">Marzo, 2025 · 72 páginas</p>
+				</div>
+				</a>
+			</li>
+
+			<!-- Nº2 -->
+			<li class="revista-item">
+				<a class="revista-card" href="https://heyzine.com/flip-book/b3772a51de.html" target="_blank">
+				<div class="revista-num">02</div>
+				<div class="revista-body">
+					<h6 class="revista-titulo">Revista Fuegos de Oktubre II</h6>
+					<p class="text-light mb-0">Agosto, 2025 · 92 páginas</p>
+				</div>
+				</a>
+			</li>
+
+			</ul>
+
+
 		</div>
 	</div>
+
 
 
 
@@ -378,5 +429,11 @@ JAVASCRIPTS
 <script src="./assets/js/functions.js" type="text/javascript"></script>
 <script src="./assets/js/progresbar/progbar.js" type="text/javascript"></script>
 <script src="./assets/js/carrusel/carrusel.js" type="text/javascript"></script>
+<!-- API de YouTube -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- Tu script -->
+<script src="video-carousel.js"></script>
+
 </body>
 </html>
