@@ -90,21 +90,6 @@ HEADER
                     <!--IMAGENES-->
             </div>
 
-            <!-- 🔹 Lightbox -->
-            <div class="lightbox" id="lightbox" onclick="cerrarSiFondo(event)">
-
-                <span class="nav izquierda" onclick="cambiarImagen(-1)">&#10094;</span>
-                <div class="lightbox-content">
-                <div class="lightbox-img-wrapper">
-                  <img id="lightbox-img" src="" alt="Imagen grande">
-                </div>
-                  <div class="descripcion-box">
-                    <div class="descripcion" id="lightbox-texto"></div>
-                  </div>
-            </div>
-            <span class="nav derecha" onclick="cambiarImagen(1)">&#10095;</span>
-            <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
-		</div>
 	</div>
 </div>
 <!-- End Header -->
@@ -168,6 +153,22 @@ FOOTER
 </div>
 </div>
 <!-- End Footer -->
+
+            <!-- 🔹 Lightbox -->
+            <div class="lightbox" id="lightbox" onclick="cerrarSiFondo(event)">
+
+                <span class="nav izquierda" onclick="cambiarImagen(-1)">&#10094;</span>
+                <div class="lightbox-content">
+                <div class="lightbox-img-wrapper">
+                  <img id="lightbox-img" src="" alt="Imagen grande">
+                </div>
+                  <div class="descripcion-box">
+                    <div class="descripcion" id="lightbox-texto"></div>
+                  </div>
+            </div>
+            <span class="nav derecha" onclick="cambiarImagen(1)">&#10095;</span>
+            <span class="cerrar" onclick="cerrarLightbox()">&times;</span>
+		</div>
     
 <!--------------------------------------
 JAVASCRIPTS

@@ -18,7 +18,7 @@
 <link href="../../assets/css/main.css" rel="stylesheet"/>
 </head>
 <body>
-<div id="loading-bar"></div>
+<div id="loading-bar2"></div>
 <!--------------------------------------
 NAVBAR
 --------------------------------------->
@@ -210,5 +210,26 @@ JAVASCRIPTS
 <script src="../../assets/js/vendor/popper.min.js" type="text/javascript"></script>
 <script src="../../assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../assets/js/functions.js" type="text/javascript"></script>
+<script>
+  (function(){
+    var bar = document.getElementById('loading-bar2');
+
+    function updateProgress(){
+      var doc = document.documentElement, body = document.body;
+      var scrollTop    = doc.scrollTop || body.scrollTop;
+      var scrollHeight = doc.scrollHeight || body.scrollHeight;
+      var clientHeight = doc.clientHeight;
+
+      var max = Math.max(scrollHeight - clientHeight, 1);
+      var pct = (scrollTop / max) * 100;
+
+      bar.style.width = pct + '%';
+    }
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    window.addEventListener('resize', updateProgress);
+  })();
+</script>
 </body>
 </html>

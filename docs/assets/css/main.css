@@ -24,6 +24,104 @@ html {
 }
 
 
+.carousel-indicators {
+  position: static; /* debajo del video */
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* 🎨 Fondo animado */
+  background: linear-gradient(270deg, #800000, #1a1a1a, #b30000, #2b2b2b);
+  background-size: 600% 600%;
+  animation: indicatorsGradientShift 10s ease infinite;
+}
+
+.carousel-indicators li {
+  background-color: #fff; /* rayitas blancas */
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 0 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.carousel-indicators li:hover {
+  opacity: 1;
+}
+
+.carousel-indicators .active {
+  background-color: #ffeb3b; /* rayita activa en amarillo brillante */
+  opacity: 1;
+}
+
+/* animación */
+@keyframes indicatorsGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* REVISTAS */
+.revista-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* 🎨 Fondo animado */
+  background: linear-gradient(270deg, #800000, #1a1a1a, #b30000, #2b2b2b);
+  background-size: 600% 600%;
+  animation: revistaGradientShift 10s ease infinite;
+}
+
+.revista-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  color: #fff;
+}
+
+.revista-num {
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 1;
+  min-width: 44px;
+  color: #fff;
+}
+
+.revista-body {
+  flex: 1;
+}
+
+.revista-titulo {
+  margin: 0;
+  font-weight: 700;
+  color: #fff;
+}
+
+.revista-card p {
+  color: #f8f9fa;
+}
+
+/* Animación del gradiente */
+@keyframes revistaGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
   .imagen-fija {
   width: 200px;
   height:100px;
@@ -98,10 +196,26 @@ html {
   z-index: 2000;
 }
 
+
+/* Progressbar con gradiente animado */
+#loading-bar2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%; /* se controla con JS */
+  background: linear-gradient(90deg, #ff0000, #ff6600, #ffcc00, #ff0000);
+  background-size: 300% 100%;
+  animation: mover 3s linear infinite;
+  z-index: 2000;
+  transition: width 0.1s linear; /* suaviza el llenado */
+}
+
 @keyframes mover {
   0%   { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
 /*IMAGENES ENSAYO*/
 
 .imagen-cuadro-ensayo {
@@ -8135,10 +8249,8 @@ a.text-warning:hover, a.text-warning:focus {
   color: #cfb400 !important; }
 
 .text-danger {
-  color: #ea2f65 !important; }
+  color: #800000 !important; }
 
-a.text-danger:hover, a.text-danger:focus {
-  color: #d1154b !important; }
 
 .text-light {
   color: #f8f9fa !important; }
@@ -10310,3 +10422,117 @@ ul.ascii > li > ul > li:last-child > ul > li:last-child > ul > li:last-child > u
   content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0└──\00a0"; }
 
 /*# sourceMappingURL=main.css.map */
+
+/* === Galería responsive === */
+@media (max-width: 992px) {
+  .galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .galeria img {
+    height: 140px; /* antes: 180px */
+  }
+}
+@media (max-width: 480px) {
+  .galeria {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .galeria img {
+    height: 200px; /* más alto en 1 columna para lucir mejor */
+  }
+}
+/* Evitar “jump” por hover en táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .galeria img:hover { transform: none; }
+}
+
+/* === Lightbox responsive === */
+@media (max-width: 992px) {
+  .lightbox-content {
+    width: 90vw;
+    height: 80vh;
+  }
+}
+@media (max-width: 768px) {
+  .lightbox-content {
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;         /* ignora 1200px fijos */
+    max-height: 90vh;        /* ignora 600px fijos */
+    flex-direction: column;  /* apila imagen y texto */
+    padding: 16px;
+    gap: 12px;
+  }
+  .lightbox-img-wrapper {
+    width: 100%;
+    height: 55vh;            /* imagen manda arriba */
+  }
+  .descripcion-box {
+    width: 100%;
+    max-width: 100%;
+    height: 30vh;            /* espacio cómodo para leer */
+  }
+  .nav {                     /* flechas más cercanas a bordes */
+    font-size: 36px;
+  }
+  .lightbox .cerrar {        /* botón X grande y fácil de tocar */
+    top: 8px;
+    right: 12px;
+    font-size: 32px;
+  }
+}
+
+/* Íconos en menú desplegable móviles en horizontal */
+@media (max-width: 768px) {
+  .navbar-nav.ml-auto {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;   /* centra en horizontal */
+    gap: 16px;                 /* espacio entre iconos */
+  }
+
+  .navbar-nav.ml-auto .nav-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-nav.ml-auto .social-link i {
+    font-size: 24px; /* opcional: agrandar un poco */
+  }
+}
+
+/*TABS SECCIONES*/
+.tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+  white-space: nowrap;
+  border: 1px solid #333;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  opacity: .8;
+  cursor: pointer;
+  text-decoration: none;   /* quita subrayado si es <a> */
+  color: inherit;          /* mantiene color de texto */
+}
+
+.tab-btn.active {
+  background: #333;
+  color: #fff;
+  opacity: 1;
+}
+
